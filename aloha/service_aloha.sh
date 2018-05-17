@@ -26,7 +26,7 @@ if [[ $(echo $T1_FU_FILE | wc -w) -ne 1 || ! -f $T1_FU_FILE ]]; then
 fi
 
 # Identify the baseline T1 segmentation
-T1_BL_SEG=$(itksnap-wt -P -i $WSFILE -llf T1-MRI-SEG)
+T1_BL_SEG=$(itksnap-wt -P -i $WSFILE -ll | grep Segmentation | grep HARP | awk '{print $4}')
 if [[ $(echo $T1_BL_SEG | wc -w) -ne 1 || ! -f $T1_BL_SEG ]]; then
   fail_ticket $TICKET_ID "Missing tag 'T1-MRI-SEG' in ticket workspace"
   exit -1
