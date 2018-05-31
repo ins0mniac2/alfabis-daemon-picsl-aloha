@@ -1,12 +1,12 @@
 #!/bin/bash
 
 ########################################################
-# COMMON ASHS HOOK SCRIPT FOR ALL ASHS-based SERVICES
+# COMMON ALOHA HOOK SCRIPT FOR ALL ALOHA-based SERVICES
 # ---
 #
 # This script can be passed either:
-# - a single ticket id in $ASHS_HOOK_DATA
-# - a compound string with comma-separated fielnds in $ASHS_HOOK_DATA
+# - a single ticket id in $ALOHA_HOOK_DATA
+# - a compound string with comma-separated fielnds in $ALOHA_HOOK_DATA
 #    ticket_id sub_task_prefix,subtask_pstart,subtask_ptotal
 ########################################################
 
@@ -14,13 +14,13 @@
 PATH=$HOME/bin:$PATH
 
 # Check whether the HOOK data is in regular or compound formar
-if [[ $(echo $ASHS_HOOK_DATA | cut -d, -s -f 1) ]]; then
-  ticket_id=$(echo $ASHS_HOOK_DATA | cut -d, -s -f 1)
-  prefix="$(echo $ASHS_HOOK_DATA | cut -d, -s -f 2) "
-  subtask_pstart=$(echo $ASHS_HOOK_DATA | cut -d, -s -f 3)
-  subtask_ptotal=$(echo $ASHS_HOOK_DATA | cut -d, -s -f 4)
+if [[ $(echo $ALOHA_HOOK_DATA | cut -d, -s -f 1) ]]; then
+  ticket_id=$(echo $ALOHA_HOOK_DATA | cut -d, -s -f 1)
+  prefix="$(echo $ALOHA_HOOK_DATA | cut -d, -s -f 2) "
+  subtask_pstart=$(echo $ALOHA_HOOK_DATA | cut -d, -s -f 3)
+  subtask_ptotal=$(echo $ALOHA_HOOK_DATA | cut -d, -s -f 4)
 else
-  ticket_id=$ASHS_HOOK_DATA
+  ticket_id=$ALOHA_HOOK_DATA
   subtask_pstart=0.0
   subtask_ptotal=1.0
 fi
